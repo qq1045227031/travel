@@ -27,12 +27,14 @@ module.exports = {
     alias: {
       'vue$': 'vue/dist/vue.esm.js',
       '@': resolve('src'),
-      'styles': resolve('src/assets/styles')
+      'styles': resolve('src/assets/styles'),
+      'common': resolve('src/common')
       // 注意这里要哟缩进，也就是空格  还有就是修改后要重启项目
     }
   },
   module: {
     rules: [
+      //去除过多警告问题
       {
         test: /\.vue$/,
         loader: 'vue-loader',

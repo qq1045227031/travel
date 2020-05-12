@@ -7,10 +7,25 @@ const path = require('path')
 module.exports = {
   dev: {
 
-    // Paths
+    // 配置请求路径Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/api': {
+        target: 'http://localhost:8080',
+        pathRewrite:{
+          '^/api:':'/static/mock'
+        }
+      },
+      '/springboot': {
+        target: 'http://120.26.178.72/springboot',
+        // changeOrigin: true,
+        //改完之后要重启电脑...
+        pathRewrite: {
+          '^/springboot':''
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
@@ -20,7 +35,7 @@ module.exports = {
     notifyOnErrors: true,
     poll: false, // https://webpack.js.org/configuration/dev-server/#devserver-watchoptions-
 
-    
+
     /**
      * Source Maps
      */
